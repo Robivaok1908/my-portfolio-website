@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellenállás Mérés Feszültség Összehasonlítással - A Te Neved</title> <!-- Cím módosítva -->
+    <!-- Itt is ki kell lépni a style.css-hez a projektek mappából -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Ha használsz Font Awesome ikonokat, itt is be kell tenni -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Opcionális: Külső betűtípusok, ha szükségesek ehhez az oldalhoz is -->
+
+    <style>
+        /* Itt adhatsz meg stílusokat, amik csak ezen az oldalon érvényesek,
+           vagy felülírják a globális style.css-t.
+           Használhatod az előző projekt stílusait, vagy módosíthatod őket, ha szükséges.
+           Az egyszerűség kedvéért az előző projekt stílusait másoltam be. */
+
+        .projekt-reszletek-szekcio {
+            padding: 80px 0; /* Felső és alsó padding */
+            background-color: #f9f9f9; /* Világos háttér a szekciónak */
+        }
+
+        .projekt-detail-container {
+            max-width: 800px; /* Max szélesség a tartalomnak */
+            margin: 0 auto; /* Középre igazítás */
+            padding: 20px;
+            background-color: #fff; /* Fehér háttér */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Kis árnyék */
+            color: #333; /* Alapértelmezett szövegszín a konténeren belül */
+        }
+
+        .projekt-detail-container h1 {
+            text-align: center;
+            color: #1a1a1a; /* Sötétebb szín a főcímnek */
+            margin-bottom: 20px;
+        }
+
+        .projekt-detail-container h2 {
+            color: #333; /* Sötétszürke szín a alcímnek */
+            margin-top: 20px; /* Felső margó */
+            margin-bottom: 10px; /* Alsó margó */
+        }
+
+        .projekt-detail-container h3 {
+            color: #333; /* Sötétszürke szín a h3 címeknek */
+            margin-bottom: 10px;
+        }
+
+        /* Stílus a FŐ képnek vagy videónak */
+        .projekt-detail-container .main-project-media {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Középre igazítás */
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Árnyék */
+        }
+
+         /* Stílus a többi képnek vagy videónak */
+         .projekt-detail-container img:not(.main-project-media),
+         .projekt-detail-container video:not(.main-project-media) {
+              max-width: 100%;
+              height: auto;
+              display: block;
+              margin: 20px auto;
+              border-radius: 5px;
+         }
+
+
+        .projekt-detail-container p {
+            line-height: 1.6;
+            color: #555; /* Szürke szín a bekezdés szövegének */
+            margin-bottom: 20px;
+        }
+
+         .projekt-technologies {
+             margin-bottom: 20px;
+         }
+
+        .projekt-technologies ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .projekt-technologies li {
+            display: inline-block;
+            background-color: #e9e9eb; /* Világosszürke háttér */
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #333; /* Szövegszín a technológia elemeken */
+        }
+
+        .projekt-links {
+            margin-bottom: 20px;
+        }
+
+         .projekt-links a {
+             display: inline-block;
+             margin-right: 15px;
+             color: #007bff; /* Kék link szín */
+             text-decoration: none;
+         }
+
+         .projekt-links a:hover {
+             text-decoration: underline;
+         }
+
+         /* Stílus a TOVÁBBI videó(k) konténernek */
+         .projekt-video-container {
+             margin-top: 30px; /* Térköz a tartalom és a videó között */
+             background-color: #f9f9f9; /* Háttérszín */
+             padding: 20px; /* Belső térköz */
+             border-radius: 8px; /* Lekerekített sarkok */
+             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Árnyék */
+             text-align: center; /* Középre igazítja a címet és a videót */
+         }
+
+         /* Stílus a TOVÁBBI videó(k) fölötti címnek */
+         .projekt-video-container h3 {
+             margin-top: 0;
+             color: #555;
+             margin-bottom: 15px; /* Térköz a cím és a videó között */
+         }
+
+         /* Stílus magának a TOVÁBBI video(k) elemnek */
+         .projekt-video-container video {
+             max-width: 100%; /* Biztosítja, hogy a videó ne lógjon ki */
+             height: auto; /* Megőrzi az arányokat */
+         }
+
+
+        /* Stílus a "Vissza" gombnak */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px; /* Felső margó, hogy elváljon a tartalomtól */
+            padding: 10px 15px;
+            background-color: #6c757d; /* Szürke háttér */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+
+        /* Középre igazító div a gombnak */
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px; /* Extra térköz a gomb felett */
+        }
+
+        /* Reszponzív stílusok */
+        @media(max-width: 768px) {
+             .projekt-reszletek-szekcio {
+                 padding: 40px 0;
+             }
+             .projekt-detail-container {
+                 padding: 15px;
+             }
+             .projekt-video-container {
+                 padding: 15px;
+                 margin-top: 20px;
+             }
+              .back-button-container {
+                  margin-top: 15px;
+              }
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <div class="navbar">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="projekt-reszletek-szekcio">
+            <div class="container">
+                <div class="projekt-detail-container"> <!-- A tartalom egy külön konténerben -->
+
+                    <h1>Ellenállás Mérés Feszültség Összehasonlítással</h1> <!-- Projekt neve -->
+
+                    <!-- A FŐ kép vagy videó a projektről -->
+                    <!-- Választhatsz képet vagy videót fő tartalomnak. -->
+                    <!-- Ha KÉP a fő tartalom: -->
+                    <!-- <img src="../images/ellenallas_meres_main.jpg" alt="Ellenállás mérés projekt fő képe" class="main-project-media"> -->
+                    <!-- Ha VIDEÓ a fő tartalom: -->
+                    <img src="../images/projekt_1.png" alt="Futófény projekt nagy képe"> <!-- Helyes elérési út a képhez! -->
+
+
+
+                    <h2>A Projektről</h2> <!-- Alcím -->
+                    <p>
+                        Ez a projekt egy alternatív módszert mutat be az ellenállás értékének meghatározására a feszültség mérése és összehasonlítása alapján, digitális multiméter vagy közvetlen ellenállásmérő nélkül. A projekt célja volt megérteni az Ohm törvényét, a feszültségosztó működését, és hogyan lehet ismeretlen ellenállás értékét kiszámítani egy ismert ellenállással sorba kapcsolva.
+                        <br><br>
+                        A rendszer egy feszültségosztó áramkörből áll, ahol egy ismert értékű ellenállás van sorba kapcsolva a mérendő, ismeretlen ellenállással. Egy stabil feszültségforrást kapcsolunk az áramkörre. A projekt során megmérjük a feszültségesést az ismert ellenálláson, vagy az ismeretlen ellenálláson (vagy a teljes áramkörön), és a feszültségosztó képlete alapján kiszámítjuk az ismeretlen ellenállás értékét.
+                        <br><br>
+                        Ez a módszer különösen hasznos lehet olyan esetekben, amikor nincs kéznél multiméter, vagy ha egy beágyazott rendszerben (pl. mikrovezérlővel) szeretnénk ellenállás értékeket érzékelni egy analóg bemenet segítségével. A projekt során mélyebben megértettem az elektronikus áramkörök alapjait, a mérés elvét és a számítási módszert.
+                    </p>
+
+                    <!-- További képek vagy videók, ha vannak (pl. kapcsolási rajz, prototípus kép) -->
+                    <!-- <img src="../images/ellenallas_meres_kapcsolas.png" alt="Ellenállás mérés kapcsolási rajz"> -->
+                    <!-- <img src="../images/ellenallas_meres_prototipus.jpg" alt="Ellenállás mérés prototípus"> -->
+                    <!-- Ha van egy másik videó: -->
+                    <!--
+                    <div class="projekt-video-container">
+                         <h3>A Mérés Bemutatása</h3>
+                         <video controls width="100%">
+                              <source src="../video/ellenallas_meres_masik.mp4" type="video/mp4"> // Helyes elérési út a másik videóhoz
+                              A böngésződ nem támogatja a videó lejátszást.
+                         </video>
+                    </div>
+                    -->
+
+
+                    <div class="projekt-technologies">
+                        <h3>Használt technológiák/eszközök:</h3> <!-- Alcím -->
+                        <ul>
+                            <li>Stabil feszültségforrás (pl. elem, tápegység)</li>
+                            <li>Ismert értékű ellenállás (referencia ellenállás)</li>
+                            <li>Mérendő, ismeretlen ellenállás</li>
+                            <li>Multiméter (a feszültség mérésére)</li>
+                            <li>Kapcsolási rajz készítő szoftver (opcionális, pl. Fritzing, KiCad)</li>
+                            <li>Számológép vagy program (a számításokhoz)</li>
+                            <li>Próbapanel vagy forrasztott áramkör</li>
+                            <li>Vezetékek</li>
+                        </ul>
+                    </div>
+
+                    <div class="projekt-links">
+                        <h3>Linkek:</h3> <!-- Alcím -->
+                        <!-- Ha van videó a projektről (pl. YouTube) -->
+                         <a href="link_a_meres_videodhoz" target="_blank"><i class="fab fa-youtube"></i> Demó Videó (Mérés)</a> <!-- Feltételezett YouTube link -->
+                        <!-- Ha van GitHub repó a számításhoz használt kódról (ha írtál ilyet) -->
+                         <!-- <a href="https://github.com/yourusername/ellenallas_meres" target="_blank"><i class="fab fa-github"></i> GitHub repó (kód/számítás)</a> -->
+                         <!-- Ha van kapcsolási rajz online -->
+                         <!-- <a href="link_a_kapcsolasi_rajzhoz" target="_blank">Kapcsolási Rajz</a> -->
+                    </div>
+
+
+                </div> <!-- End of .projekt-detail-container -->
+
+                 <!-- Vissza gomb a projekt listához (projektek.html) - Középre igazítva a konténer alatt -->
+                 <div class="back-button-container">
+                     <a href="../projektek.html" class="back-button"> <!-- Helyes elérési út a projektek oldalhoz -->
+                         ← Vissza a projektekhez
+                     </a>
+                 </div>
+
+            </div> <!-- End of .container -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Your Name. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <!-- Ha használsz script.js-t, ami a hamburger menüért vagy másért felel -->
+    <!-- <script src="../script.js"></script> -->
+    <!-- Ha csak a hamburger menü scriptet akarod, az itt is lehet a footer előtt vagy a </body> bezáró tag előtt -->
+     <script>
+        // A hamburger menü JavaScript kódja itt van (ha használsz ilyet ezen az oldalon)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+        }
+    </script>
+
+
+</body>
+</html>

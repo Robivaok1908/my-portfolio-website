@@ -1,0 +1,943 @@
+/* style.css - Teljes CSS kód az új színpalettával és struktúrával */
+
+/* CSS Változók a Színpalettához */
+:root {
+    --color-primary: #0077CC;         /* Elsődleges szín (kék) - Gombok, Linkek, Kiemelések, Hamburger ikon */
+    --color-secondary: #1A3E5A;        /* Másodlagos szín (sötétkék) - Címek, Fejléc háttér, Fontos szöveg */
+    --color-accent: #FF6B6B;           /* Akcent szín (korall) - Különleges elemek, ikonok hover */
+    --color-background-light: #F4F7F6;  /* Világos háttér - Oldal alap háttere */
+    --color-background-medium: #E9EEF2; /* Közepes háttér - Szekciók hátere az elválasztáshoz (pl. Elérhetőségek) */
+    --color-text-dark: #333333;        /* Sötét szöveg szín - Jól olvasható a világos háttereken */
+    --color-card-background: #FFFFFF;  /* Kártya háttér - Fehér (pl. elérhetőség elemek, bemutatkozás blokk) */
+    --color-border-light: #DDE2E6;     /* Világos szegély/vonal - Vonalak, elválasztók */
+    --color-shadow-light: rgba(0, 0, 0, 0.08); /* Lágy árnyék */
+    --color-shadow-medium: rgba(0, 0, 0, 0.12); /* Közepes árnyék */
+    --color-shadow-strong: rgba(0, 0, 0, 0.15); /* Erős árnyék */
+}
+
+/* Alapértelmezett stílusok */
+body {
+    margin: 0;
+    font-family: 'Arial', sans-serif; /* Használjuk az Arial-t, ha nincs Open Sans/Roboto importálva */
+    line-height: 1.6;
+    color: var(--color-text-dark);
+    background-color: var(--color-background-light);
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif; /* Használjuk a Robotot, ha beimportáltad */
+    color: var(--color-secondary);
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-size: 2.2em;
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--color-secondary);
+    padding: 15px 0;
+    box-shadow: 0 2px 4px var(--color-shadow-light);
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 1.8em;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif; /* Logó betűtípusa */
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.nav-links li {
+    margin-left: 25px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #ffffff;
+    padding: 5px 0;
+    transition: color 0.3s ease;
+    font-weight: 600;
+}
+
+.nav-links a:hover {
+    color: var(--color-primary);
+}
+
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.hamburger .bar {
+    width: 25px;
+    height: 3px;
+    background-color: #ffffff;
+    margin: 4px 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+main {
+    padding: 40px 0;
+    min-height: calc(100vh - 120px);
+}
+
+footer {
+    background-color: var(--color-secondary);
+    text-align: center;
+    padding: 20px 0;
+    color: #ffffff;
+    box-shadow: 0 -2px 4px var(--color-shadow-light);
+}
+
+/* Szekció alap stílusok */
+section {
+    padding: 60px 20px;
+    margin: 0 auto;
+    max-width: 1000px;
+}
+
+/* Bemutatkozás szekció stílusai */
+#bemutatkozas {
+    text-align: center;
+}
+
+.bemutatkozas-tartalom {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+
+    background-color: var(--color-card-background);
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 4px 10px var(--color-shadow-light);
+    margin-top: 20px;
+}
+
+.profil-kep {
+    width: 250px;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px var(--color-shadow-light);
+    flex-shrink: 0;
+}
+
+.bemutatkozas-szoveg {
+    flex-grow: 1;
+    text-align: left;
+}
+
+.bemutatkozas-szoveg h2 {
+    margin-top: 0;
+    color: var(--color-secondary);
+    text-align: left;
+}
+
+/* Elérhetőségek szekció stílusai */
+#elerhetosegek {
+    background-color: var(--color-background-medium);
+    border-radius: 10px;
+    padding: 40px;
+    box-shadow: 0 6px 15px var(--color-shadow-medium);
+    text-align: center;
+}
+
+#elerhetosegek h2 {
+    color: var(--color-secondary);
+    margin-bottom: 40px;
+    font-size: 2em;
+    position: relative;
+}
+
+/* Aláhúzás a címsor alá */
+#elerhetosegek h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.elerhetoseg-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.elerhetoseg-elem {
+    background-color: var(--color-card-background);
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px var(--color-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.elerhetoseg-elem:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--color-shadow-medium);
+}
+
+.elerhetoseg-elem .icon {
+    color: var(--color-primary);
+    font-size: 2.5em;
+    margin-bottom: 15px;
+    transition: color 0.3s ease;
+}
+
+.elerhetoseg-elem:hover .icon {
+     color: var(--color-accent);
+}
+
+.elerhetoseg-elem span {
+    font-weight: bold;
+    color: var(--color-text-dark);
+    margin-bottom: 5px;
+    display: block;
+}
+
+.elerhetoseg-elem a {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s ease;
+    word-break: break-word;
+}
+
+.elerhetoseg-elem a:hover {
+    color: var(--color-accent);
+    text-decoration: underline;
+}
+
+
+/* Projektek szekció stílusok */
+#projektek {
+    background-color: var(--color-background-light);
+}
+
+#projektek h2 {
+    margin-bottom: 40px;
+    position: relative;
+}
+
+/* Aláhúzás a projektek címsor alá (ha szükséges, ha a globális h2::after nem elég) */
+/* Ha a globális h2::after minden h2 alá rak vonalat, akkor ezt a blokkot törölheted */
+#projektek h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: var(--color-primary);
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.projekt-lista {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+.projekt-elem { /* Ez valószínűleg a .projekt-kartya-ra vonatkozik */
+    background-color: var(--color-card-background);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px var(--color-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.projekt-elem:hover { /* Ez valószínűleg a .projekt-kartya-ra vonatkozik */
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px var(--color-shadow-medium);
+}
+
+.projekt-kep { /* Ez valószínűleg a .projekt-kartya-kep-re vonatkozik */
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+}
+
+.projekt-info { /* Ez valószínűleg a .projekt-kartya-tartalom-ra vonatkozik */
+    padding: 20px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.projekt-info h3 { /* Ez valószínűleg a .projekt-kartya-tartalom h3-ra vonatkozik */
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: var(--color-secondary);
+}
+
+.projekt-info p { /* Ez valószínűleg a .projekt-kartya-tartalom p-re vonatkozik */
+    margin-bottom: 20px;
+    color: var(--color-text-dark);
+}
+
+/* Általános gomb stílusok - JAVÍTVA A DISPLAY TULAJDONSÁG */
+.btn {
+    display: inline-block; /* Fontos: Így viselkedik flex itemként */
+    padding: 10px 20px;
+    /* margin-right: 10px; /* Ezt a gap helyettesíti a projekt-gombok-ban */
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Átmenet színekre is */
+    cursor: pointer; /* Megmutatja, hogy kattintható */
+    text-align: center; /* Szöveg középre igazítása a gombon belül */
+    white-space: nowrap; /* Megakadályozza a szöveg tördelését a gombon belül */
+}
+
+.btn-primary {
+    background-color: var(--color-primary); /* Paletta szín */
+    color: white;
+    border: 1px solid var(--color-primary); /* Paletta szín */
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; /* Sötétebb kék hover */
+    border-color: #004085; /* Még sötétebb kék hover */
+    color: white; /* Biztos, hogy a szöveg fehér marad */
+}
+
+.btn-secondary {
+    background-color: #6c757d; /* Bootstrap szürke */
+    color: white;
+    border: 1px solid #6c757d;
+}
+
+.btn-secondary:hover {
+    background-color: #5a6268;
+    border-color: #545b62;
+    color: white; /* Biztos, hogy a szöveg fehér marad */
+}
+
+/* Projekt Lista Grid Stílus */
+.projekt-lista-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    padding: 0 20px;
+}
+
+/* Projekt Kártya Stílus */
+.projekt-kartya {
+    border: 1px solid var(--color-border-light);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px var(--color-shadow-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--color-card-background); /* Fehér háttér a palettából */
+}
+
+.projekt-kartya:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px var(--color-shadow-medium);
+}
+
+.projekt-kartya-kep {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+}
+
+.projekt-kartya-tartalom {
+    padding: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start; /* Maradjon balra igazított a tartalom */
+}
+
+.projekt-kartya-tartalom h3 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 1.3em;
+    color: var(--color-secondary); /* Paletta szín */
+}
+
+.projekt-kartya-tartalom p {
+    margin-bottom: 15px;
+    color: var(--color-text-dark); /* Paletta szín */
+    flex-grow: 1;
+}
+
+/* Stílus a gombokat tartalmazó div-hez a projekt kártyán - JAVÍTVA A SZELEKTOR SÚLYA */
+.projekt-kartya-tartalom .projekt-gombok {
+    display: flex;
+    gap: 10px;
+    margin-top: auto; /* Tolja a gombokat alulra a projekt-kartya-tartalom flex containerben */
+    flex-wrap: wrap;
+    justify-content: flex-start; /* Gombokat balra igazítja a konténeren belül */
+    /* Ha középre akarod igazítani a gombokat a kártya alján, akkor használd ezt: */
+    /* justify-content: center; */
+}
+
+/* Opcionális: Stílus a gomboknak a projekt gombok konténeren belül */
+.projekt-kartya-tartalom .projekt-gombok .btn {
+  /* flex-shrink: 0; */
+  /* Mivel a .btn már inline-block, általában nem kell extra stílus ide */
+}
+
+.projekt-kartya-video {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+
+/* Reszponzív Stílusok */
+@media (max-width: 768px) {
+    section {
+        padding: 40px 15px;
+    }
+
+    h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    header {
+        padding: 10px 15px;
+    }
+
+    header .logo { /* Pontosabb szelektor */
+        font-size: 1.5em;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--color-background-medium);
+        position: absolute;
+        top: 60px; /* Állítsd be a header magasságához igazítva */
+        left: 0;
+        padding: 10px 0;
+        box-shadow: 0 2px 5px var(--color-shadow-light);
+        z-index: 1000;
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .nav-links li {
+        margin: 10px 20px;
+    }
+
+    .nav-links a {
+         padding: 10px 0;
+         border-bottom: 1px solid var(--color-border-light);
+         color: var(--color-text-dark);
+    }
+
+    .nav-links li:last-child a {
+        border-bottom: none;
+    }
+
+    .nav-links a:hover {
+        color: var(--color-primary);
+    }
+
+    .hamburger {
+        display: flex;
+    }
+
+    .hamburger.active .bar:nth-child(1) {
+        transform: translateY(7px) rotate(45deg);
+        background-color: var(--color-primary);
+    }
+
+    .hamburger.active .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .hamburger.active .bar:nth-child(3) {
+        transform: translateY(-7px) rotate(-45deg);
+        background-color: var(--color-primary);
+    }
+
+    /* Reszponzív bemutatkozás szekció */
+    .bemutatkozas-tartalom {
+        flex-direction: column;
+        text-align: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .profil-kep {
+        width: 180px;
+    }
+
+    .bemutatkozas-szoveg {
+        text-align: center;
+    }
+
+    .bemutatkozas-szoveg h2 {
+        text-align: center;
+    }
+
+    /* Elérhetőségek szekció reszponzív stílusai */
+    #elerhetosegek {
+        padding: 30px 20px;
+    }
+
+    #elerhetosegek h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .elerhetoseg-lista {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .elerhetoseg-elem {
+        padding: 15px;
+    }
+
+    .elerhetoseg-elem .icon {
+        font-size: 2em;
+        margin-bottom: 10px;
+    }
+
+    .elerhetoseg-elem span {
+        font-size: 0.95em;
+    }
+
+    .elerhetoseg-elem a {
+        font-size: 1em;
+    }
+
+    /* Projektek szekció reszponzív stílusai */
+    .projekt-lista {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Kicsit kisebb minimum szélesség */
+        gap: 20px;
+    }
+
+    .projekt-kartya-tartalom .projekt-gombok {
+        justify-content: center; /* Mobil nézetben középre igazíthatod a gombokat */
+    }
+}
+
+/* Opcionális animációk (ehhez JavaScript is kell) */
+.animate-on-scroll {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.animate-on-scroll.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* style.css - Új stílusok a dedikált projekt oldalakhoz */
+
+/* style.css - Új/Módosított stílusok a dedikált projekt oldalakhoz, a témát követve */
+
+/* Projekt Részletek Szekció */
+/* Használjuk a meglévő section stílusokat az alap paddinghoz */
+.projekt-reszletek-szekcio {
+    background-color: var(--color-background-light); /* Világos háttér */
+    text-align: center; /* Középre igazítás */
+}
+
+.projekt-reszletek-szekcio h1 {
+    color: var(--color-secondary); /* Cím színe */
+    margin-bottom: 40px;
+    font-size: 2.5em;
+    position: relative; /* A ::after pszeudo-elem pozícionálásához */
+}
+
+/* Aláhúzás a főcímsor alá */
+.projekt-reszletek-szekcio h1::after {
+    content: '';
+    display: block;
+    width: 80px; /* Kicsit szélesebb vonal a főcímnél */
+    height: 4px; /* Vastagabb vonal */
+    background-color: var(--color-primary); /* Elsődleges szín */
+    margin: 15px auto 0;
+    border-radius: 2px;
+}
+
+.projekt-reszletek-tartalom {
+    display: flex;
+    flex-direction: column; /* Alapértelmezetten oszlop elrendezés */
+    gap: 40px; /* Távolság a részek között */
+    align-items: center; /* Középre igazítás */
+    max-width: 1000px; /* Maximális szélesség a tartalomnak */
+    margin: 0 auto; /* Középre igazítás */
+}
+
+.projekt-kep-kontener {
+    max-width: 100%; /* Kép konténer kitölti a rendelkezésre álló helyet */
+    margin: 0 auto; /* Középre igazítás */
+    box-shadow: 0 6px 15px var(--color-shadow-medium); /* Árnyék a képnek */
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-card-background); /* Fehér háttér */
+    padding: 10px; /* Kis belső térköz */
+    border: 1px solid var(--color-border-light); /* Világos keret */
+    width: 100%; /* Biztosítja, hogy a flex item kitöltse a teret, ha szükséges */
+}
+
+.projekt-reszletek-media {
+    width: 100%; /* Kép/videó kitölti a konténert */
+    height: auto; /* Magasság automatikus */
+    display: block;
+    border-radius: 5px; /* Kicsit kisebb lekerekítés a médián belül */
+}
+
+.projekt-leiras-blokk {
+    text-align: left; /* Szöveg balra igazítása */
+    max-width: 100%; /* Kitölti a rendelkezésre álló helyet a flex containerben */
+    background-color: var(--color-card-background); /* Fehér háttér */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px var(--color-shadow-light);
+    border: 1px solid var(--color-border-light);
+    flex-grow: 1; /* Lehetővé teszi, hogy a leírás blokk növekedjen */
+}
+
+.projekt-leiras-blokk h2 {
+    color: var(--color-secondary); /* Másodlagos szín */
+    text-align: left; /* Leírás címsor balra igazítása */
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    position: relative; /* A ::after pszeudo-elem pozícionálásához */
+}
+
+/* Aláhúzás a leírás címsor alá */
+.projekt-leiras-blokk h2::after {
+    content: '';
+    display: block;
+    width: 50px; /* Kicsit rövidebb vonal */
+    height: 3px;
+    background-color: var(--color-primary); /* Elsődleges szín */
+    margin: 10px 0 0; /* Balra igazított vonal */
+    border-radius: 2px;
+}
+
+
+.projekt-leiras-blokk h3 {
+    color: var(--color-primary); /* Elsődleges szín a alcímeknek */
+    margin-top: 25px;
+    margin-bottom: 10px;
+    font-size: 1.4em;
+}
+
+.projekt-leiras-blokk p {
+    margin-bottom: 15px;
+    color: var(--color-text-dark); /* Sötét szöveg */
+}
+
+.projekt-leiras-blokk ul {
+    margin-bottom: 15px;
+    padding-left: 20px; /* Listaelemek behúzása */
+    color: var(--color-text-dark); /* Sötét szöveg */
+}
+
+.projekt-leiras-blokk ul li {
+    margin-bottom: 8px;
+    list-style: disc inside; /* Pontok a lista elemek elé */
+}
+
+.technologia-cimkek {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px; /* Távolság a technológia "címkék" között */
+    margin-top: 15px;
+    margin-bottom: 25px;
+}
+
+.technologia-cimkek span {
+    background-color: var(--color-background-medium); /* Közepes háttérszín a címkéknek */
+    color: var(--color-secondary); /* Sötétkék szöveg */
+    padding: 5px 12px;
+    border-radius: 20px; /* Lekerekített címkék */
+    font-size: 0.9em;
+    font-weight: 600;
+    border: 1px solid var(--color-border-light); /* Világos keret */
+    box-shadow: 0 1px 3px var(--color-shadow-light); /* Lágy árnyék a címkének */
+}
+
+/* Projekt gombok a dedikált oldalon */
+.projekt-akciok {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Távolság a gombok között */
+    margin-top: 30px; /* Több hely a leírás alatt */
+    justify-content: center; /* Gombok középre igazítása */
+}
+
+/* Reszponzív stílusok a projekt oldalhoz */
+@media (min-width: 992px) {
+     /* Nagyobb képernyőkön egymás mellé a kép és a leírás */
+    .projekt-reszletek-tartalom {
+        flex-direction: row; /* Sor elrendezés */
+        align-items: flex-start; /* Fent kezdődjön a tartalom */
+    }
+
+    .projekt-kep-kontener {
+        flex-basis: 50%; /* Kép konténer kb. a fél szélességet foglalja el */
+        max-width: 500px; /* Maximális szélesség a képnek */
+        flex-shrink: 0; /* Megakadályozza a kép zsugorodását */
+    }
+
+    .projekt-leiras-blokk {
+        flex-basis: 50%; /* Leírás blokk kb. a fél szélességet foglalja el */
+        flex-grow: 1; /* Lehetővé teszi, hogy a leírás blokk növekedjen */
+    }
+}
+
+
+@media (max-width: 768px) {
+    .projekt-reszletek-szekcio h1 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+     .projekt-reszletek-szekcio h1::after {
+        width: 60px;
+        height: 3px;
+        margin: 10px auto 0;
+    }
+
+    .projekt-reszletek-tartalom {
+        gap: 30px;
+    }
+
+    .projekt-kep-kontener {
+        padding: 5px;
+    }
+
+    .projekt-leiras-blokk {
+        padding: 20px;
+    }
+
+    .projekt-leiras-blokk h2 {
+        font-size: 1.6em;
+        margin-bottom: 15px;
+    }
+
+    .projekt-leiras-blokk h2::after {
+        width: 40px;
+        height: 2px;
+        margin: 8px 0 0;
+    }
+
+    .projekt-leiras-blokk h3 {
+        font-size: 1.2em;
+        margin-top: 20px;
+        margin-bottom: 8px;
+    }
+
+    .technologia-cimkek {
+        gap: 8px;
+        margin-top: 10px;
+        margin-bottom: 20px;
+    }
+
+    .technologia-cimkek span {
+        padding: 4px 10px;
+        font-size: 0.85em;
+    }
+
+    .projekt-akciok {
+        gap: 10px;
+        margin-top: 20px;
+        justify-content: center; /* Maradjon középen mobil nézetben */
+    }
+
+    /* Gombok mérete mobil nézetben */
+    .projekt-akciok .btn {
+        padding: 8px 16px;
+        font-size: 0.9em;
+    }
+}
+
+/* style.css */
+
+/* Vissza gomb stílusa */
+.back-button {
+    display: inline-block; /* Hogy lehessen rá margin/padding */
+    background-color: #f0f0f0; /* Világos háttér */
+    color: #333; /* Sötét szöveg */
+    padding: 10px 15px; /* Belső térköz */
+    margin-bottom: 20px; /* Alatta lévő elemhez képest távolság */
+    text-decoration: none; /* Nincs aláhúzás */
+    border: 1px solid #ccc; /* Vékony szegély */
+    border-radius: 5px; /* Lekerekített sarkok */
+    transition: background-color 0.3s ease; /* Átmenet egér fölé vitelkor */
+}
+
+.back-button:hover {
+    background-color: #ddd; /* Sötétebb háttér egér fölé vitelkor */
+}
+
+/* Ha ikonokat használsz, pl. Font Awesome, akkor a nyíl (&larr;) helyett használhatsz ikont is */
+/* Példa: <a href="../projektek.html" class="back-button"><i class="fas fa-arrow-left"></i> Vissza a Projektekhez</a> */
+/* .back-button i {
+    margin-right: 8px;
+} */
+
+/* További stílusok a projekt részletek oldalra, ha szükségesek */
+.projekt-reszletek-szekcio {
+    padding: 80px 0; /* Felső és alsó padding */
+}
+
+.projekt-reszletek-tartalom {
+    display: flex;
+    flex-wrap: wrap; /* Törjön új sorba kisebb képernyőn */
+    gap: 30px; /* Hely a kép és a leírás között */
+}
+
+.projekt-kep-kontener {
+    flex: 1; /* Rugalmas méret */
+    min-width: 300px; /* Minimum szélesség, mielőtt új sorba törne */
+    text-align: center; /* Kép középre igazítása */
+}
+
+.projekt-reszletek-media {
+    max-width: 100%; /* Kép ne lógjon ki a konténerből */
+    height: auto; /* Megtartja az arányokat */
+    border-radius: 8px; /* Lekerekített sarkok a képen */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Árnyék a képnek */
+}
+
+.projekt-leiras-blokk {
+    flex: 2; /* Több helyet kapjon a leírás */
+    min-width: 300px; /* Minimum szélesség */
+}
+
+.projekt-leiras-blokk h2,
+.projekt-leiras-blokk h3 {
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.projekt-leiras-blokk ul {
+    list-style-type: disc; /* Pontok a listaelemek előtt */
+    margin-left: 20px;
+    margin-bottom: 15px;
+}
+
+.projekt-leiras-blokk ul li {
+    margin-bottom: 5px;
+}
+
+/* Reszponzivitás: kisebb képernyőkön a kép és a leírás egymás alá kerüljön */
+@media (max-width: 768px) {
+    .projekt-reszletek-tartalom {
+        flex-direction: column; /* Oszlopba rendezés */
+    }
+
+    .projekt-kep-kontener,
+    .projekt-leiras-blokk {
+        min-width: unset; /* Nincs minimum szélesség */
+        width: 100%; /* Teljes szélesség */
+    }
+}
+/* CSS a kép és a videó elrendezéséhez a Jelzőrendszer oldalon */
+
+/* Konténer a fő képnek */
+.project-image-container {
+    text-align: center; /* Középre igazítja a képet */
+    margin-bottom: 30px; /* Térköz a kép alatt */
+}
+
+/* A fő kép stílusa */
+.project-main-image {
+    max-width: 100%; /* Biztosítja, hogy a kép ne lógjon ki */
+    height: auto; /* Megőrzi az arányokat */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Árnyék */
+}
+
+/* Konténer a videónak a kép alatt */
+.project-video-container {
+    margin-top: 30px; /* Térköz a kép és a videó között */
+    background-color: #f9f9f9; /* Háttérszín */
+    padding: 20px; /* Belső térköz */
+    border-radius: 8px; /* Lekerekített sarkok */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Árnyék */
+    text-align: center; /* Középre igazítja a címet és a videót */
+}
+
+/* A videó fölötti cím stílusa */
+.project-video-container h3 {
+    margin-top: 0;
+    color: #555;
+    margin-bottom: 15px; /* Térköz a cím és a videó között */
+}
+
+/* Maga a video elem stílusa */
+.project-video-container video {
+    max-width: 100%; /* Biztosítja, hogy a videó ne lógjon ki */
+    height: auto; /* Megőrzi az arányokat */
+}
+
+/* Ha van reszponzív stílusod, győződj meg róla, hogy ezeket is kezeli */
+/* Példa: */
+@media(max-width: 768px) {
+    .project-image-container, .project-video-container {
+        margin-bottom: 20px; /* Kisebb térköz mobil nézetben */
+        margin-top: 20px;
+    }
+    .project-video-container {
+        padding: 15px; /* Kisebb belső térköz mobil nézetben */
+    }
+}

@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLC Futófény Projekt Részletek - A Te Neved</title>
+    <!-- Itt is ki kell lépni a style.css-hez a projektek mappából -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Ha használsz Font Awesome ikonokat, itt is be kell tenni -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- Opcionális: Külső betűtípusok, ha szükségesek ehhez az oldalhoz is -->
+
+    <style>
+        /* Itt adhatsz meg stílusokat, amik csak ezen az oldalon érvényesek,
+           vagy felülírják a globális style.css-t.
+           Ha a style.css-ben vannak már univerzális stílusok a projekt oldalakhoz,
+           ez az <style> blokk lehet rövidebb vagy üres. */
+
+        .projekt-reszletek-szekcio {
+            padding: 80px 0; /* Felső és alsó padding */
+            background-color: #f9f9f9; /* Világos háttér a szekciónak */
+        }
+
+        .projekt-detail-container {
+            max-width: 800px; /* Max szélesség a tartalomnak */
+            margin: 0 auto; /* Középre igazítás */
+            padding: 20px;
+            background-color: #fff; /* Fehér háttér */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Kis árnyék */
+            color: #333; /* Alapértelmezett szövegszín a konténeren belül */
+        }
+
+        .projekt-detail-container h1 {
+            text-align: center;
+            color: #1a1a1a; /* Sötétebb szín a főcímnek */
+            margin-bottom: 20px;
+        }
+
+        .projekt-detail-container h2 {
+            color: #333; /* Sötétszürke szín a alcímnek */
+            margin-top: 20px; /* Felső margó */
+            margin-bottom: 10px; /* Alsó margó */
+        }
+
+        .projekt-detail-container h3 {
+            color: #333; /* Sötétszürke szín a h3 címeknek */
+            margin-bottom: 10px;
+        }
+
+        /* Stílus a FŐ videónak */
+        .projekt-detail-container .main-project-video {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Videó középre igazítása */
+            margin: 20px auto;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Árnyék a fő videónak */
+        }
+
+         /* Stílus a többi képnek, ha van */
+         .projekt-detail-container img:not(.main-project-video) { /* Kirekesztjük a fő videót */
+              max-width: 100%;
+              height: auto;
+              display: block;
+              margin: 20px auto;
+              border-radius: 5px;
+         }
+
+
+        .projekt-detail-container p {
+            line-height: 1.6;
+            color: #555; /* Szürke szín a bekezdés szövegének */
+            margin-bottom: 20px;
+        }
+
+         .projekt-technologies {
+             margin-bottom: 20px;
+         }
+
+        .projekt-technologies ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .projekt-technologies li {
+            display: inline-block;
+            background-color: #e9e9eb; /* Világosszürke háttér */
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #333; /* Szövegszín a technológia elemeken */
+        }
+
+        .projekt-links {
+            margin-bottom: 20px;
+        }
+
+         .projekt-links a {
+             display: inline-block;
+             margin-right: 15px;
+             color: #007bff; /* Kék link szín */
+             text-decoration: none;
+         }
+
+         .projekt-links a:hover {
+             text-decoration: underline;
+         }
+
+         /* Stílus a TOVÁBBI videó konténernek (ha van több videó) */
+         .projekt-video-container {
+             margin-top: 30px; /* Térköz a tartalom és a videó között */
+             background-color: #f9f9f9; /* Háttérszín */
+             padding: 20px; /* Belső térköz */
+             border-radius: 8px; /* Lekerekített sarkok */
+             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Árnyék */
+             text-align: center; /* Középre igazítja a címet és a videót */
+         }
+
+         /* Stílus a TOVÁBBI videó fölötti címnek */
+         .projekt-video-container h3 {
+             margin-top: 0;
+             color: #555;
+             margin-bottom: 15px; /* Térköz a cím és a videó között */
+         }
+
+         /* Stílus magának a TOVÁBBI video elemnek */
+         .projekt-video-container video:not(.main-project-video) { /* Kirekesztjük a fő videót */
+             max-width: 100%; /* Biztosítja, hogy a videó ne lógjon ki */
+             height: auto; /* Megőrzi az arányokat */
+         }
+
+
+        /* Stílus a "Vissza" gombnak */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px; /* Felső margó, hogy elváljon a tartalomtól */
+            padding: 10px 15px;
+            background-color: #6c757d; /* Szürke háttér */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+
+        /* Középre igazító div a gombnak */
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px; /* Extra térköz a gomb felett */
+        }
+
+        /* Reszponzív stílusok */
+        @media(max-width: 768px) {
+             .projekt-reszletek-szekcio {
+                 padding: 40px 0;
+             }
+             .projekt-detail-container {
+                 padding: 15px;
+             }
+             .projekt-video-container {
+                 padding: 15px;
+                 margin-top: 20px;
+             }
+              .back-button-container {
+                  margin-top: 15px;
+              }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="navbar">
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="projekt-reszletek-szekcio">
+            <div class="container">
+                <div class="projekt-detail-container"> <!-- A tartalom egy külön konténerben -->
+
+                    <h1>PLC-vezérelt Futófény Projekt</h1> <!-- Projekt neve -->
+
+                    <!-- A FŐ videó a PLC Futófény projektről -->
+                    <!-- Helyezd el a videófájlt a megfelelő mappába, pl. video/plc_futo_feny_bemutato.mp4 -->
+                    <!-- Cseréld le az elérési utat a saját videódhoz -->
+                    <video controls autoplay muted loop width="100%" class="main-project-video">
+                         <source src="../video/IMG_0405.mp4" type="video/mp4"> <!-- Helyes elérési út a videóhoz -->
+                         A böngésződ nem támogatja a videó lejátszást.
+                    </video>
+
+                    <h2>A Projektről</h2> <!-- Alcím -->
+                    <p>
+                        Ez a projekt egy ipari környezetben is használatos **PLC (Programozható Logikai Vezérlő)** segítségével valósított LED futófény rendszer. A célom volt megismerni a PLC programozás alapjait, a digitális kimenetek vezérlését, az időzítések kezelését, és bemutatni egy egyszerű automatizálási feladatot.
+                        <br><br>
+                        A rendszer egy sor LED-ből áll, amelyek egy PLC digitális kimeneteihez csatlakoznak. A PLC programja (általában létra diagram, funkcióblokk diagram vagy strukturált szöveg nyelven írva) vezérli a LED-ek be- és kikapcsolását egy adott sorrendben és sebességgel, így keltve a futófény hatást.
+                        <br><br>
+                        A projekt során sokat tanultam a PLC hardverekről, a programozási környezetekről (pl. Siemens TIA Portal, Rockwell RSLogix, stb.), a digitális I/O (Input/Output) kezelésről, az időzítő (Timer) és számláló (Counter) funkciókról, valamint a hibakeresésről a PLC programban. Ez a projekt jó alapot adott az ipari automatizálás világához.
+                    </p>
+
+                    <!-- További képek, ha vannak (pl. PLC, kapcsolási rajz, program screenshot) -->
+                    <!-- <img src="../images/plc_kep.jpg" alt="Használt PLC"> -->
+                    <!-- <img src="../images/plc_futo_feny_kapcsolas.png" alt="PLC Futófény kapcsolási rajz"> -->
+                    <!-- <img src="../images/plc_ladder.png" alt="PLC létra diagram"> -->
+
+
+                    <div class="projekt-technologies">
+                        <h3>Használt technológiák/eszközök:</h3> <!-- Alcím -->
+                        <ul>
+                            <li>PLC (Siemens S7-1200) </li>
+                            <li>PLC programozási szoftver (OpenPLC) </li>
+                            <li>Programozási nyelv (Ladder) </li>
+                            <li>Digitális kimeneti modul(ok) a PLC-hez</li>
+                            <li>LED-ek</li>
+                            <li>Tápegység </li>
+                            <li>Vezetékek, sorkapcsok</li>
+                        </ul>
+                    </div>
+
+                    <div class="projekt-links">
+                        <h3>Linkek:</h3> <!-- Alcím -->
+                        <!-- Ha van YouTube link a videóhoz (ha nem a fájlt használod fő tartalomként, vagy ha van mindkettő) -->
+                         <!-- <a href="link_a_plc_futo_feny_videodhoz" target="_blank"><i class="fab fa-youtube"></i> YouTube Videó</a> -->
+                        <!-- Ha van GitHub repó a PLC programhoz (ha feltöltötted) -->
+                         <a href="https://github.com/yourusername/plc_futo_feny" target="_blank"><i class="fab fa-github"></i> GitHub repó (program)</a>
+                         <!-- Ha van online szimuláció (pl. Factory I/O, Codesys Visualization) -->
+                         <!-- <a href="link_a_szimulaciohoz" target="_blank">Online Szimuláció/Vizualizáció</a> -->
+                    </div>
+
+                    <!-- Itt helyezzük el TOVÁBBI videókat, ha vannak -->
+                    <!-- Ha a fő videó a fenti <video> elem, akkor ez a blokk további videóknak szól -->
+                    <!-- Ha nincs több videód, törölheted ezt a blokkot -->
+                    <!--
+                    <div class="projekt-video-container">
+                         <h3>Másik Videó a Projektről</h3>
+                         <video controls width="100%">
+                              <source src="../video/masik_video.mp4" type="video/mp4"> // Helyes elérési út a másik videóhoz
+                              A böngésződ nem támogatja a videó lejátszást.
+                         </video>
+                    </div>
+                    -->
+
+
+                </div> <!-- End of .projekt-detail-container -->
+
+                 <!-- Vissza gomb a projekt listához (projektek.html) - Középre igazítva a konténer alatt -->
+                 <div class="back-button-container">
+                     <a href="../projektek.html" class="back-button"> <!-- Helyes elérési út a projektek oldalhoz -->
+                         ← Vissza a projektekhez
+                     </a>
+                 </div>
+
+            </div> <!-- End of .container -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2023 Your Name. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <!-- Ha használsz script.js-t, ami a hamburger menüért vagy másért felel -->
+    <!-- <script src="../script.js"></script> -->
+    <!-- Ha csak a hamburger menü scriptet akarod, az itt is lehet a footer előtt vagy a </body> bezáró tag előtt -->
+     <script>
+        // A hamburger menü JavaScript kódja itt van (ha használsz ilyet ezen az oldalon)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+        }
+    </script>
+
+
+</body>
+</html>

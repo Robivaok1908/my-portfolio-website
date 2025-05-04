@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Futófény Projekt Részletek - A Te Neved</title>
+    <!-- Itt is ki kell lépni a style.css-hez a projektek mappából -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Opcionális: Külső betűtípusok, ikonok, ha szükségesek ehhez az oldalhoz is -->
+    <style>
+        /* Itt adhatsz meg stílusokat, amik csak ezen az oldalon érvényesek */
+        .projekt-reszletek-szekcio {
+            padding: 80px 0; /* Felső és alsó padding */
+            background-color: #f9f9f9; /* Világos háttér a szekciónak */
+        }
+
+        .projekt-detail-container {
+            max-width: 800px; /* Max szélesség a tartalomnak */
+            margin: 0 auto; /* Középre igazítás */
+            padding: 20px;
+            background-color: #fff; /* Fehér háttér */
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Kis árnyék */
+            color: #333; /* Alapértelmezett szövegszín a konténeren belül */
+        }
+
+        .projekt-detail-container h1 {
+            text-align: center;
+            color: #1a1a1a; /* Sötétebb szín a főcímnek */
+            margin-bottom: 20px;
+        }
+
+        .projekt-detail-container h2 {
+            color: #333; /* Sötétszürke szín a alcímnek */
+            margin-top: 20px; /* Felső margó */
+            margin-bottom: 10px; /* Alsó margó */
+        }
+
+        .projekt-detail-container h3 {
+            color: #333; /* Sötétszürke szín a h3 címeknek */
+            margin-bottom: 10px;
+        }
+
+
+        .projekt-detail-container img {
+            max-width: 100%;
+            height: auto;
+            display: block; /* Kép középre igazítása */
+            margin: 20px auto;
+            border-radius: 5px;
+        }
+
+        .projekt-detail-container p {
+            line-height: 1.6;
+            color: #555; /* Szürke szín a bekezdés szövegének */
+            margin-bottom: 20px;
+        }
+
+         .projekt-technologies {
+             margin-bottom: 20px;
+         }
+
+        .projekt-technologies ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .projekt-technologies li {
+            display: inline-block;
+            background-color: #e9e9eb; /* Világosszürke háttér */
+            padding: 5px 10px;
+            margin: 3px;
+            border-radius: 3px;
+            font-size: 0.9em;
+            color: #333; /* Szövegszín a technológia elemeken */
+        }
+
+        .projekt-links {
+            margin-bottom: 20px;
+        }
+
+         .projekt-links a {
+             display: inline-block;
+             margin-right: 15px;
+             color: #007bff; /* Kék link szín */
+             text-decoration: none;
+         }
+
+         .projekt-links a:hover {
+             text-decoration: underline;
+         }
+
+        /* Stílus a "Vissza" gombnak */
+        .back-button {
+            display: inline-block;
+            margin-top: 30px; /* Felső margó, hogy elváljon a tartalomtól */
+            padding: 10px 15px;
+            background-color: #6c757d; /* Szürke háttér */
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+        }
+
+        /* Középre igazító div a gombnak */
+        .back-button-container {
+            text-align: center;
+            margin-top: 20px; /* Extra térköz a gomb felett */
+        }
+
+    </style>
+</head>
+<header>
+  <div class="container">
+      <div class="navbar">
+      </div>
+  </div>
+</header>
+
+<body>
+    <main>
+        <section class="projekt-reszletek-szekcio">
+            <div class="container">
+                <div class="projekt-detail-container"> <!-- A tartalom egy külön konténerben -->
+
+                    <h1>Futófény Projekt</h1> <!-- Projekt neve -->
+
+                    <!-- Nagyobb felbontású kép, ha van -->
+                    <video controls autoplay muted loop width="100%" class="main-project-video">
+                      <source src="../video/projekt_3_2.mp4" type="video/mp4"> <!-- Helyes elérési út a videóhoz -->
+                      A böngésződ nem támogatja a videó lejátszást.
+                 </video>
+
+                    <h2>A Projektről</h2> <!-- Alcím -->
+                    <p>
+                        Itt jön a **részletes leírás** a Futófény projektről. Mesélj a célról, a megvalósításról, a kihívásokról, a használt technológiákról és eszközökről.
+                        <br><br>
+                        Például: "Ez a projekt egy mikrokontroller alapú LED futófény rendszer, amit Arduino segítségével valósítottam meg. Célom volt megismerni a digitális kimenetek vezérlését és az időzítést."
+                        <br><br>
+                        Írhatsz a kód struktúrájáról, a hardver komponensekről, a tesztelésről.
+                    </p>
+
+                    <div class="projekt-technologies">
+                        <h3>Használt technológiák/eszközök:</h3> <!-- Alcím -->
+                        <ul>
+                            <li>Arduino</li>
+                            <li>C++ (Arduino IDE)</li>
+                            <li>LED-ek</li>
+                            <li>Ellenállások</li>
+                            <li>Próbapanel</li>
+                        </ul>
+                    </div>
+
+                    <div class="projekt-links">
+                        <h3>Linkek:</h3> <!-- Alcím -->
+                        <!-- Ha van demó videó vagy online szimuláció linkje -->
+                        <!-- <a href="http://youtu.be/xyz" target="_blank">Demó Videó</a> -->
+                        <!-- Ha van GitHub repó (ez már a főoldalon is van, de itt is lehet) -->
+                         <a href="https://github.com/yourusername/futo_feny" target="_blank">GitHub repó</a>
+                    </div>
+
+                </div> <!-- End of .projekt-detail-container -->
+
+                 <!-- Vissza gomb a projekt listához (projektek.html) - Középre igazítva a konténer alatt -->
+                 <div class="back-button-container">
+                     <a href="../projektek.html" class="back-button">
+                         &larr; Vissza a projektekhez
+                     </a>
+                 </div>
+
+            </div> <!-- End of .container -->
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 Your Name. Minden jog fenntartva.</p>
+        </div>
+    </footer>
+
+    <!-- Ha használsz script.js-t, ami a hamburger menüért vagy másért felel -->
+    <!-- <script src="../script.js"></script> -->
+    <!-- Ha csak a hamburger menü scriptet akarod, az itt is lehet a footer előtt vagy a </body> bezáró tag előtt -->
+     <script>
+        // A hamburger menü JavaScript kódja itt van (ha használsz ilyet ezen az oldalon)
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        if (hamburger && navLinks) {
+            hamburger.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                hamburger.classList.toggle('active');
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.addEventListener('click', () => {
+                    if (navLinks.classList.contains('active')) {
+                        navLinks.classList.remove('active');
+                        hamburger.classList.remove('active');
+                    }
+                });
+            });
+        }
+    </script>
+
+
+</body>
+</html>
+</html>

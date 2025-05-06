@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projektek - [A Te Neved]</title>
+    <title>Csuka Róbert Portfóliója</title>
     <link rel="stylesheet" href="style.css">
     <!-- Opcionális: Font Awesome ikonokhoz, ha használod az elérhetőségek ikonjainál -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 </head>
 <body>
 
@@ -45,9 +46,9 @@
                 <div class="projekt-lista-grid">
                     <!-- 1. Projekt Kártya -->
                     <div class="projekt-kartya">
-                        <img src="images/projekt_1.png" alt="Projekt 1 előnézeti kép" class="projekt-kartya-kep">
+                        <img src="images/ni-multisim-png (2).PNG" alt="Projekt 1 előnézeti kép" class="projekt-kartya-kep">
                         <div class="projekt-kartya-tartalom">
-                            <h3>Projekt 1 Címe</h3>
+                            <h3>Ellenállás Mérés Feszültség Összehasonlítással</h3>
                             <p>Rövid leírás a Projekt 1-ről. Itt bemutathatod a főbb jellemzőit vagy a technológiákat.</p>
                             <div class="projekt-gombok">
                                 <!-- LINK A DEDIKÁLT PROJEKT OLDALRA -->
@@ -62,12 +63,12 @@
                     <div class="projekt-kartya">
                          <img src="images/projekt_2.png" alt="Projekt 2 előnézeti kép" class="projekt-kartya-kep">
                         <div class="projekt-kartya-tartalom">
-                            <h3>Projekt 2 Címe</h3>
+                            <h3>PLC-vezérelt Futófény Projekt</h3>
                             <p>Rövid leírás a Projekt 2-ről. Itt bemutathatod a főbb jellemzőit vagy a technológiákat.</p>
                             <div class="projekt-gombok">
                                 <!-- LINK A DEDIKÁLT PROJEKT OLDALRA -->
                                 <a href="projekt/futofeny.html" class="btn btn-primary">Megtekintés</a>
-                                <a href="[Projekt 2 GitHub linkje]" class="btn btn-secondary" target="_blank">GitHub</a>
+                                <a href="https://github.com/csuka-robert/PLC-controlled-Running-Light-Project" class="btn btn-secondary" target="_blank">GitHub</a>
                             </div>
                         </div>
                     </div>
@@ -80,12 +81,12 @@
                             <p>A böngésződ nem támogatja a videó lejátszását. <a href="images/projekt_3.MP4">Töltsd le a videót itt</a>.</p>
                           </video>
                        <div class="projekt-kartya-tartalom">
-                           <h3>Projekt 3 Címe</h3>
+                           <h3>Jelzőlámpa rendszer</h3>
                            <p>Rövid leírás a Projekt 3-ról. Itt bemutathatod a főbb jellemzőit vagy a technológiákat.</p>
                             <div class="projekt-gombok">
                                 <!-- LINK A DEDIKÁLT PROJEKT OLDALRA -->
                                 <a href="projekt/jelzorendszer.html" class="btn btn-primary">Megtekintés</a>
-                               <a href="[Projekt 3 GitHub linkje]" class="btn btn-secondary" target="_blank">GitHub</a>
+                               <a href="https://github.com/csuka-robert/Signal-light-system" class="btn btn-secondary" target="_blank">GitHub</a>
                            </div>
                        </div>
                    </div>
@@ -106,6 +107,9 @@
 
     <!-- JavaScript a hamburger menühöz (a modális ablakokhoz szükséges JS-t eltávolítottuk) -->
     <script src="script.js"></script>
-
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
+    </script>
 </body>
 </html>

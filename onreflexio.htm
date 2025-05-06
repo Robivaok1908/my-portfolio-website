@@ -3,9 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Önreflexió - Alkalmazott Technológiák - A Te Neved</title>
+    <title>Csuka Róbert Portfóliója</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
     <style>
         /* Itt adhatsz meg stílusokat, amik csak ezen az oldalon érvényesek,
@@ -161,21 +165,22 @@
 <body>
 
     <header>
-        <div class="container">
-            <div class="navbar">
-                <a href="index.html" class="logo">YourLogo</a>
-                <ul class="nav-links">
-                    <li><a href="index.html">Bemutatkozás</a></li>
-                    <li><a href="projektek.html">Projektek</a></li>
-                    <li><a href="onreflexio.htm">Önreflexió</a></li>
-                </ul>
-                <div class="hamburger">
+        <div class="container"> <!-- CONTAINER HOZZÁADVA -->
+            <nav class="navbar">
+                <a href="index.html" class="logo">Csuka Róbert</a>
+                <div class="hamburger" id="hamburger">
                     <span class="bar"></span>
                     <span class="bar"></span>
                     <span class="bar"></span>
                 </div>
-            </div>
-        </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="index.html">Bemutatkozás</a></li>
+                    <li><a href="projektek.html">Projektek</a></li>
+                    <li><a href="onreflexio.htm">Önreflexió</a></li>
+
+                </ul>
+            </nav>
+        </div> <!-- CONTAINER BEZÁRVA -->
     </header>
 
     <main>
@@ -185,7 +190,7 @@
 
                 <div class="technologia-grid">
                     <!-- Technológia kártyák (mint korábban) -->
-                    <div class="technologia-kartya">
+                    <div class="technologia-kartya" data-aos="slide-left">
                          <i class="fab fa-html5"></i>
                         <h3>HTML5</h3>
                         <p>
@@ -193,7 +198,7 @@
                         </p>
                     </div>
 
-                    <div class="technologia-kartya">
+                    <div class="technologia-kartya" data-aos="slide-left">
                          <i class="fab fa-css3-alt"></i>
                         <h3>CSS3</h3>
                         <p>
@@ -201,7 +206,7 @@
                         </p>
                     </div>
 
-                    <div class="technologia-kartya">
+                    <div class="technologia-kartya" data-aos="slide-left">
                          <i class="fab fa-js-square"></i>
                         <h3>JavaScript</h3>
                         <p>
@@ -209,7 +214,7 @@
                         </p>
                     </div>
 
-                    <div class="technologia-kartya">
+                    <div class="technologia-kartya" data-aos="slide-left">
                          <img src="images/plc_general.jpg" alt="PLC ikon">
                         <h3>PLC Programozás</h3>
                         <p>
@@ -217,7 +222,7 @@
                         </p>
                     </div>
 
-                     <div class="technologia-kartya">
+                     <div class="technologia-kartya" data-aos="slide-left">
                           <img src="images/elektronika_general.jpg" alt="Elektronika ikon">
                          <h3>Elektronika Alapok</h3>
                          <p>
@@ -225,7 +230,7 @@
                          </p>
                      </div>
 
-                     <div class="technologia-kartya">
+                     <div class="technologia-kartya" data-aos="slide-left">
                           <i class="fab fa-github"></i>
                          <h3>Verziókövetés (Git/GitHub)</h3>
                          <p>
@@ -238,7 +243,7 @@
                 </div> <!-- End of .technologia-grid -->
 
                 <!-- Önálló tanulási folyamat szöveg -->
-                <div class="onreflexio-szoveg">
+                <div class="onreflexio-szoveg" data-aos="fade-up">
                     <h2>Önálló Tanulási Folyamat</h2>
                     <p>
                         Ez a portfólió weboldal és a rajta bemutatott projektek nagyrészt önálló tanulási folyamat eredményei. Számos online forrást (dokumentációk, tutorialok, online kurzusok), videót és fórumot használtam a szükséges ismeretek megszerzéséhez.
@@ -254,7 +259,7 @@
                 </div>
 
                 <!-- Új blokk a tárhely és domain információval -->
-                <div class="tarhely-info">
+                <div class="tarhely-info" data-aos="fade-up">
                     <h2>A Weboldal Elhelyezése (Tárhely és Domain)</h2>
                     <p>
                         Ezt a portfólió weboldalt a **Nethely.hu** szolgáltatójánál helyeztem el. Egy **1 GB tárhelyes csomagot** választottam, ami a jelenlegi tartalomhoz bőven elegendő, és a vásárlás során **kedvező áron** sikerült hozzájutnom. A tárhely kiválasztása és beállítása is része volt a weboldal elkészítésének, ami újabb gyakorlati tapasztalatot jelentett a weboldal publikálásával kapcsolatban.
@@ -270,9 +275,9 @@
     </main>
 
     <footer>
-        <div class="container">
-            <p>© 2023 Your Name. Minden jog fenntartva.</p>
-        </div>
+        <div class="container"> <!-- CONTAINER HOZZÁADVA -->
+            <p>© 2025 Csuka Róbert</p>
+        </div> <!-- CONTAINER BEZÁRVA -->
     </footer>
 
     <!-- Hamburger menü JavaScript -->
@@ -297,5 +302,10 @@
         }
     </script>
 
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
 </body>
 </html>

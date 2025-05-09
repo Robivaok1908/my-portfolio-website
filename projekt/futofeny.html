@@ -1,297 +1,289 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PLC Futófény Projekt Részletek - A Te Neved</title>
-    <!-- Itt is ki kell lépni a style.css-hez a projektek mappából -->
-    <link rel="stylesheet" href="../style.css">
-    <!-- Ha használsz Font Awesome ikonokat, itt is be kell tenni -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <!-- Opcionális: Külső betűtípusok, ha szükségesek ehhez az oldalhoz is -->
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>PLC Futófény Projekt - A Te Neved</title>
+<!-- Fő stíluslap -->
+<link rel="stylesheet" href="../style.css" />
+<!-- Ikonok -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 
-    <style>
-        /* Itt adhatsz meg stílusokat, amik csak ezen az oldalon érvényesek,
-           vagy felülírják a globális style.css-t.
-           Ha a style.css-ben vannak már univerzális stílusok a projekt oldalakhoz,
-           ez az <style> blokk lehet rövidebb vagy üres. */
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    background-color: #fafafa;
+    color: #333;
+    margin: 0;
+    padding: 0;
+  }
+  .content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  /* Fő kép vagy videó */
+  .main-image {
+    display: block;
+    margin: 20px auto;
+    max-width: 800px;
+    width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+  /* Szöveg */
+  p {
+    margin-bottom: 20px;
+    font-size: 1.1em;
+  }
+  /* Technológiák szekció */
+  .projekt-technologies {
+    background-color: #f0f0f0;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: inset 0 1px 3px rgba(0,0,0,0.1);
+    margin-top: 20px;
+  }
+  .projekt-technologies h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #34495e;
+  }
+  .projekt-technologies ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .projekt-technologies li {
+    background-color: #e9e9eb;
+    margin: 5px;
+    padding: 8px 12px;
+    border-radius: 4px;
+    font-size: 0.95em;
+    transition: background-color 0.3s;
+  }
+  .projekt-technologies li:hover {
+    background-color: #d0d0d0;
+  }
+  /* További képek szekció */
+.tovabbi-kepek {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 30px;
+}
+.kepek-kartya {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 200px; /* fix méret, vagy max-width: 200px */
+  margin: 10px;
+  padding: 10px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  cursor: pointer;
+  transition: transform 0.3s;
+  text-align: center;
+}
+  .kepek-kartya.megnagyitott {
+    transform: scale(2);
+    z-index: 10;
+    position: relative;
+  }
+  .kepek-kartya img ,
+  .kepek-kartya video
+  {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+  }
 
-        .projekt-reszletek-szekcio {
-            padding: 80px 0; /* Felső és alsó padding */
-            background-color: #f9f9f9; /* Világos háttér a szekciónak */
-        }
-
-        .projekt-detail-container {
-            max-width: 800px; /* Max szélesség a tartalomnak */
-            margin: 0 auto; /* Középre igazítás */
-            padding: 20px;
-            background-color: #fff; /* Fehér háttér */
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Kis árnyék */
-            color: #333; /* Alapértelmezett szövegszín a konténeren belül */
-        }
-
-        .projekt-detail-container h1 {
-            text-align: center;
-            color: #1a1a1a; /* Sötétebb szín a főcímnek */
-            margin-bottom: 20px;
-        }
-
-        .projekt-detail-container h2 {
-            color: #333; /* Sötétszürke szín a alcímnek */
-            margin-top: 20px; /* Felső margó */
-            margin-bottom: 10px; /* Alsó margó */
-        }
-
-        .projekt-detail-container h3 {
-            color: #333; /* Sötétszürke szín a h3 címeknek */
-            margin-bottom: 10px;
-        }
-
-        /* Stílus a FŐ videónak */
-        .projekt-detail-container .main-project-video {
-            max-width: 100%;
-            height: auto;
-            display: block; /* Videó középre igazítása */
-            margin: 20px auto;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.2); /* Árnyék a fő videónak */
-        }
-
-         /* Stílus a többi képnek, ha van */
-         .projekt-detail-container img:not(.main-project-video) { /* Kirekesztjük a fő videót */
-              max-width: 100%;
-              height: auto;
-              display: block;
-              margin: 20px auto;
-              border-radius: 5px;
-         }
-
-
-        .projekt-detail-container p {
-            line-height: 1.6;
-            color: #555; /* Szürke szín a bekezdés szövegének */
-            margin-bottom: 20px;
-        }
-
-         .projekt-technologies {
-             margin-bottom: 20px;
-         }
-
-        .projekt-technologies ul {
-            list-style: none;
-            padding: 0;
-        }
-
-        .projekt-technologies li {
-            display: inline-block;
-            background-color: #e9e9eb; /* Világosszürke háttér */
-            padding: 5px 10px;
-            margin: 3px;
-            border-radius: 3px;
-            font-size: 0.9em;
-            color: #333; /* Szövegszín a technológia elemeken */
-        }
-
-        .projekt-links {
-            margin-bottom: 20px;
-        }
-
-         .projekt-links a {
-             display: inline-block;
-             margin-right: 15px;
-             color: #007bff; /* Kék link szín */
-             text-decoration: none;
-         }
-
-         .projekt-links a:hover {
-             text-decoration: underline;
-         }
-
-         /* Stílus a TOVÁBBI videó konténernek (ha van több videó) */
-         .projekt-video-container {
-             margin-top: 30px; /* Térköz a tartalom és a videó között */
-             background-color: #f9f9f9; /* Háttérszín */
-             padding: 20px; /* Belső térköz */
-             border-radius: 8px; /* Lekerekített sarkok */
-             box-shadow: 0 2px 5px rgba(0,0,0,0.1); /* Árnyék */
-             text-align: center; /* Középre igazítja a címet és a videót */
-         }
-
-         /* Stílus a TOVÁBBI videó fölötti címnek */
-         .projekt-video-container h3 {
-             margin-top: 0;
-             color: #555;
-             margin-bottom: 15px; /* Térköz a cím és a videó között */
-         }
-
-         /* Stílus magának a TOVÁBBI video elemnek */
-         .projekt-video-container video:not(.main-project-video) { /* Kirekesztjük a fő videót */
-             max-width: 100%; /* Biztosítja, hogy a videó ne lógjon ki */
-             height: auto; /* Megőrzi az arányokat */
-         }
-
-
-        /* Stílus a "Vissza" gombnak */
-        .back-button {
-            display: inline-block;
-            margin-top: 30px; /* Felső margó, hogy elváljon a tartalomtól */
-            padding: 10px 15px;
-            background-color: #6c757d; /* Szürke háttér */
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .back-button:hover {
-            background-color: #5a6268;
-        }
-
-        /* Középre igazító div a gombnak */
-        .back-button-container {
-            text-align: center;
-            margin-top: 20px; /* Extra térköz a gomb felett */
-        }
-
-        /* Reszponzív stílusok */
-        @media(max-width: 768px) {
-             .projekt-reszletek-szekcio {
-                 padding: 40px 0;
-             }
-             .projekt-detail-container {
-                 padding: 15px;
-             }
-             .projekt-video-container {
-                 padding: 15px;
-                 margin-top: 20px;
-             }
-              .back-button-container {
-                  margin-top: 15px;
-              }
-        }
-
-    </style>
+  /* Gombok */
+  .gombok {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  #toggle-kepek {
+    padding: 10px 20px;
+    font-size: 1em;
+    border: none;
+    border-radius: 8px;
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  #toggle-kepek:hover {
+    background-color: #0056b3;
+  }
+  /* Vissza gomb */
+  .back-button {
+    display: inline-block;
+    margin-top: 30px;
+    padding: 10px 20px;
+    background-color: #6c757d;
+    color: #fff;
+    border-radius: 8px;
+    text-decoration: none;
+  }
+  .back-button:hover {
+    background-color: #5a6268;
+  }
+</style>
 </head>
 <body>
-    <header>
-        <div class="container">
-            <div class="navbar">
-            </div>
+
+<header>
+<div class="container">
+    <nav class="navbar">
+        <a href="index.html" class="logo">Csuka Róbert</a>
+        <div class="hamburger" id="hamburger">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
         </div>
-    </header>
+        <ul class="nav-links" id="nav-links">
+            <li><a href="index.html">Bemutatkozás</a></li>
+            <li><a href="projektek.html">Projektek</a></li>
+            <li><a href="onreflexio.htm">Önreflexió</a></li>
+        </ul>
+    </nav>
+</div>
+</header>
 
-    <main>
-        <section class="projekt-reszletek-szekcio">
-            <div class="container">
-                <div class="projekt-detail-container"> <!-- A tartalom egy külön konténerben -->
+<main>
+<div class="content">
+<h1>PLC Futófény Projekt</h1>
 
-                    <h1>PLC-vezérelt Futófény Projekt</h1> <!-- Projekt neve -->
-
-                    <!-- A FŐ videó a PLC Futófény projektről -->
-                    <!-- Helyezd el a videófájlt a megfelelő mappába, pl. video/plc_futo_feny_bemutato.mp4 -->
-                    <!-- Cseréld le az elérési utat a saját videódhoz -->
-                    <video controls autoplay muted loop width="100%" class="main-project-video">
-                         <source src="../video/IMG_0405.mp4" type="video/mp4"> <!-- Helyes elérési út a videóhoz -->
-                         A böngésződ nem támogatja a videó lejátszást.
-                    </video>
-
-                    <h2>A Projektről</h2> <!-- Alcím -->
-                    <p>
-                        Ez a projekt egy ipari környezetben is használatos PLC (Programozható Logikai Vezérlő) segítségével valósított LED futófény rendszer. A célom volt megismerni a PLC programozás alapjait, a digitális kimenetek vezérlését, az időzítések kezelését, és bemutatni egy egyszerű automatizálási feladatot.
-                        <br><br>
-                        A rendszer egy sor LED-ből áll, amelyek egy PLC digitális kimeneteihez csatlakoznak. A PLC programja (létra diagram szöveg nyelven írva) vezérli a LED-ek be- és kikapcsolását egy adott sorrendben és sebességgel, így keltve a futófény hatást.
-                        <br><br>
-                        A projekt során sokat tanultam a PLC hardverekről, a programozási környezetekről (pl. Siemens TIA Portal, OpenPLC,xLadder, stb.), a digitális I/O (Input/Output) kezelésről, az időzítő (Timer) és számláló (Counter) funkciókról, valamint a hibakeresésről a PLC programban. Ez a projekt jó alapot adott az ipari automatizálás világához.
-                    </p>
-
-                    <!-- További képek, ha vannak (pl. PLC, kapcsolási rajz, program screenshot) -->
-                    <!-- <img src="../images/plc_kep.jpg" alt="Használt PLC"> -->
-                    <!-- <img src="../images/plc_futo_feny_kapcsolas.png" alt="PLC Futófény kapcsolási rajz"> -->
-                    <!-- <img src="../images/plc_ladder.png" alt="PLC létra diagram"> -->
+<!-- Fő videó vagy kép -->
 
 
-                    <div class="projekt-technologies">
-                        <h3>Használt technológiák/eszközök:</h3> <!-- Alcím -->
-                        <ul>
-                            <li>PLC (Siemens S7-1200) </li>
-                            <li>PLC programozási szoftver (Siemens TIA Portal) </li>
-                            <li>Programozási nyelv (Ladder) </li>
-                            <li>Digitális kimeneti modul(ok) a PLC-hez</li>
-                            <li>LED-ek (Schrack bz501210-B)</li>
-                            <li>Tápegység </li>
-                            <li>Vezetékek, sorkapcsok</li>
-                        </ul>
-                    </div>
+<h2>A Projektről</h2>
+<p>
+Ez a projekt egy ipari környezetben is használatos PLC (Programozható Logikai Vezérlő) segítségével valósított LED futófény rendszer. A célom volt megismerni a PLC programozás alapjait, a digitális kimenetek vezérlését, az időzítések kezelését, és bemutatni egy egyszerű automatizálási feladatot.
+<br><br>
+A rendszer egy sor LED-ből áll, amelyek egy PLC digitális kimeneteihez csatlakoznak. A PLC programja (létra diagram szöveg nyelven írva) vezérli a LED-ek be- és kikapcsolását egy adott sorrendben és sebességgel, így keltve a futófény hatást.
+<br><br>
+A projekt során sokat tanultam a PLC hardverekről, a programozási környezetekről (pl. Siemens TIA Portal, OpenPLC,xLadder, stb.), a digitális I/O (Input/Output) kezelésről, az időzítő (Timer) és számláló (Counter) funkciókról, valamint a hibakeresésről a PLC programban. Ez a projekt jó alapot adott az ipari automatizálás világához.
+</p>
 
-                    <div class="projekt-links">
-                        <h3>Linkek:</h3> <!-- Alcím -->
-                        <!-- Ha van YouTube link a videóhoz (ha nem a fájlt használod fő tartalomként, vagy ha van mindkettő) -->
-                         <!-- <a href="link_a_plc_futo_feny_videodhoz" target="_blank"><i class="fab fa-youtube"></i> YouTube Videó</a> -->
-                        <!-- Ha van GitHub repó a PLC programhoz (ha feltöltötted) -->
-                         <a href="https://github.com/yourusername/plc_futo_feny" target="_blank"><i class="fab fa-github"></i> GitHub repó (program)</a>
-                         <!-- Ha van online szimuláció (pl. Factory I/O, Codesys Visualization) -->
-                         <!-- <a href="link_a_szimulaciohoz" target="_blank">Online Szimuláció/Vizualizáció</a> -->
-                    </div>
-
-                    <!-- Itt helyezzük el TOVÁBBI videókat, ha vannak -->
-                    <!-- Ha a fő videó a fenti <video> elem, akkor ez a blokk további videóknak szól -->
-                    <!-- Ha nincs több videód, törölheted ezt a blokkot -->
-                    <!--
-                    <div class="projekt-video-container">
-                         <h3>Másik Videó a Projektről</h3>
-                         <video controls width="100%">
-                              <source src="../video/masik_video.mp4" type="video/mp4"> // Helyes elérési út a másik videóhoz
-                              A böngésződ nem támogatja a videó lejátszást.
-                         </video>
-                    </div>
-                    -->
+<!-- Használt technológiák -->
+<div class="projekt-technologies">
+<h3>Használt technológiák / eszközök:</h3>
+<ul>
+<li>PLC (Siemens S7-1200)</li>
+<li>PLC programozási szoftver (Siemens TIA Portal)</li>
+<li>Programozási nyelv (Ladder)</li>
+<li>Digitális kimeneti modul(ok) a PLC-hez</li>
+<li>LED-ek (Schrack bz501210-B)</li>
+<li>Tápegység</li>
+<li>Vezetékek, sorkapcsok</li>
+</ul>
+</div>
 
 
-                </div> <!-- End of .projekt-detail-container -->
 
-                 <!-- Vissza gomb a projekt listához (projektek.html) - Középre igazítva a konténer alatt -->
-                 <div class="back-button-container">
-                     <a href="../projektek.html" class="back-button"> <!-- Helyes elérési út a projektek oldalhoz -->
-                         ← Vissza a projektekhez
-                     </a>
-                 </div>
+<!-- További képek -->
+<div class="tovabbi-kepek" id="tovabbi-kepek">
+<div class="kepek-kartya">
+    <video id="projekVideo" width="100%" muted loop>
+        <source src="../video/IMG_0405.mp4" type="video/mp4" />
+A böngésződ nem támogatja a videó lejátszást.
+</video>
+<p>PLC Setup</p>
+</div>
+<div class="kepek-kartya">
+<img src="../images/image7.png" alt="I\O cím táblázat" />
+<p>Kapcsolási rajz</p>
+</div>
+<div class="kepek-kartya">
+<img src="../images/image3.png" alt="Ladder diagram" />
+<p>Ladder Diagram</p>
+</div>
+</div>
 
-            </div> <!-- End of .container -->
-        </section>
-    </main>
+<!-- Gombok -->
+<div class="gombok">
+<button id="toggle-kepek">További képek megjelenítése</button>
+<a href="../projektek.html" class="back-button">← Vissza a projektekhez</a>
+</div>
+</div> <!-- végén .content -->
 
-    <footer>
-        <div class="container"> <!-- CONTAINER HOZZÁADVA -->
-            <p>© 2025 Csuka Róbert</p>
-        </div> <!-- CONTAINER BEZÁRVA -->
-    </footer>
+</div> <!-- végén .container -->
+</section>
+</main>
 
-    <!-- Ha használsz script.js-t, ami a hamburger menüért vagy másért felel -->
-    <!-- <script src="../script.js"></script> -->
-    <!-- Ha csak a hamburger menü scriptet akarod, az itt is lehet a footer előtt vagy a </body> bezáró tag előtt -->
-     <script>
-        // A hamburger menü JavaScript kódja itt van (ha használsz ilyet ezen az oldalon)
-        const hamburger = document.querySelector('.hamburger');
-        const navLinks = document.querySelector('.nav-links');
+<footer>
+<div class="container">
+<p>© 2025 Csuka Róbert</p>
+</div>
+</footer>
 
-        if (hamburger && navLinks) {
-            hamburger.addEventListener('click', () => {
-                navLinks.classList.toggle('active');
-                hamburger.classList.toggle('active');
-            });
+<script>
+/* Hamburger menü működés (ha van) */
+const hamburger = document.querySelector('.hamburger');
+const navLinks = document.querySelector('.nav-links');
 
-            document.querySelectorAll('.nav-links a').forEach(link => {
-                link.addEventListener('click', () => {
-                    if (navLinks.classList.contains('active')) {
-                        navLinks.classList.remove('active');
-                        hamburger.classList.remove('active');
-                    }
-                });
-            });
+if (hamburger && navLinks) {
+    hamburger.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+        hamburger.classList.toggle('active');
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            if (navLinks.classList.contains('active')) {
+                navLinks.classList.remove('active');
+                hamburger.classList.remove('active');
+            }
+        });
+    });
+}
+
+// Képek megjelenítése/titkosítása
+const toggleBtn = document.getElementById('toggle-kepek');
+const kepekDiv = document.getElementById('tovabbi-kepek');
+
+toggleBtn.addEventListener('click', () => {
+    if (kepekDiv.style.display === 'none' || kepekDiv.style.display === '') {
+        kepekDiv.style.display = 'flex';
+        toggleBtn.textContent = 'További képek elrejtése';
+    } else {
+        kepekDiv.style.display = 'none';
+        toggleBtn.textContent = 'További képek megjelenítése';
+    }
+});
+
+// Képek nagyítása és videó szabályozása
+document.querySelectorAll('.kepek-kartya').forEach(kartya => {
+    kartya.addEventListener('click', () => {
+        const isNagyitott = kartya.classList.toggle('megnagyitott');
+        const video = document.getElementById('projekVideo');
+
+        if (video) {
+            if (isNagyitott) {
+                if (video.paused) {
+                    video.play();
+                }
+            } else {
+                if (!video.paused) {
+                    video.pause();
+                }
+            }
         }
-    </script>
-
+    });
+});
+</script>
 
 </body>
 </html>

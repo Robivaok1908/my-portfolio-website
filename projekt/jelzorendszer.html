@@ -4,7 +4,15 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Jelzőlámpa rendszer - A Te Neved</title>
+<!-- Fő stíluslap -->
+<link rel="stylesheet" href="../style.css" />
+<!-- Ikonok -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
 <!-- Egységes stílus -->
+         <!-- Google Fonts link -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 <style>
 body {
   font-family: Arial, sans-serif;
@@ -14,51 +22,7 @@ body {
   margin: 0;
   padding: 0;
 }
-/* Fejléc */
-header {
-  background-color: #2c3e50;
-  padding: 10px 0;
-}
-header .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 20px;
-}
-.navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-.navbar .logo {
-  color: #fff;
-  font-size: 1.5em;
-  text-decoration: none;
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-.hamburger span {
-  width: 25px;
-  height: 3px;
-  background-color: #fff;
-  margin: 4px 0;
-  display: block;
-}
-.nav-links {
-  list-style: none;
-  display: flex;
-  gap: 20px;
-}
-.nav-links li a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-}
-.nav-links li a:hover {
-  text-decoration: underline;
-}
+
 
 /* Mobil menü */
 @media(max-width: 768px) {
@@ -204,23 +168,24 @@ p {
 </head>
 <body>
 
-<header>
-<div class="container">
-    <nav class="navbar">
-        <a href="index.html" class="logo">Csuka Róbert</a>
-        <div class="hamburger" id="hamburger">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
-        <ul class="nav-links" id="nav-links">
-            <li><a href="index.html">Bemutatkozás</a></li>
-            <li><a href="projektek.html">Projektek</a></li>
-            <li><a href="onreflexio.htm">Önreflexió</a></li>
-        </ul>
-    </nav>
-</div>
-</header>
+    <header>
+        <div class="container"> <!-- CONTAINER HOZZÁADVA -->
+            <nav class="navbar">
+                <a href="index.html" class="logo">Csuka Róbert</a>
+                <div class="hamburger" id="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+                <ul class="nav-links" id="nav-links">
+                    <li><a href="../index.html">Bemutatkozás</a></li>
+                    <li><a href="../projektek.html">Projektek</a></li>
+                    <li><a href="../onreflexio.htm">Önreflexió</a></li>
+
+                </ul>
+            </nav>
+        </div> <!-- CONTAINER BEZÁRVA -->
+    </header>
 
 <main>
 <div class="content">
